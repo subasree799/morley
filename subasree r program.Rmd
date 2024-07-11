@@ -1,0 +1,42 @@
+```{r}
+str(morley)
+head(morley)
+summary(morley)
+```
+
+```{r}
+missing_values <- sapply(morley, function(x) sum(is.na(x)))
+print(missing_values)
+```
+
+```{r}
+# Visualize the data
+# Histogram for numerical variables
+num_vars <- sapply(morley, is.numeric)
+num_data <- morley[, num_vars]
+```
+
+```{r}
+# boxplot
+ggplot(morley, aes(x =Expt, y =Run)) +
+  geom_boxplot(fill = "orange", color = "black") +
+  theme_minimal() +
+  labs(title = "Boxplot of Humidity by Season", x= "expt", y= "run")
+```
+
+
+```{r}
+# Scatter plot to show the relationship between two numeric variables (replace 'temp' and 'humidity' with appropriate column names)
+ggplot(morley, aes(x = Expt, y = Run)) +
+  geom_point(color = "red") +
+  theme_minimal() +
+  labs(title = "Scatter Plot of Temperature vs Humidity", x = "expt", y = "run")
+```
+
+```{r}
+# Time series plot for a variable over time (replace 'date' and 'temp' with appropriate column names)
+ggplot(morley, aes(x = Expt , y = Run)) +
+  geom_line(color = "blue") +
+  theme_minimal() +
+  labs(title = "morley", x = "expt", y = "run")
+```
